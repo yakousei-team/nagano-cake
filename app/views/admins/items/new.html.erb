@@ -1,7 +1,7 @@
 <h4>商品新規登録</h4>
 <%= form_with model:@item, url: admins_items_path, local: true  do |f| %>
 	<div>
-		<%= attachment_image_tag @item, :image, class: "img-square",id: :img_prev, fallback: "no_image.jpg", size:"200x200" %>
+		<%= attachment_image_tag @item, :image, class: "img-square",id: :img_prev, fallback: "no_image.jpg", size:"200x200" %><br>
 		<%= f.attachment_field :image, id: :item_img %>
 	</div>
 	<script type="text/javascript">
