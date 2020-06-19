@@ -1,0 +1,27 @@
+<h4>商品一覧</h4>
+<div class="add_item">
+<%= link_to "+", new_admins_item_path %>
+</div>
+<table>
+	<thread>
+		<tr>商品ID</tr>
+		<tr>商品名</tr>
+		<tr>税抜価格</tr>
+		<tr>ジャンル</tr>
+		<tr>ステータス</tr>
+	</thread>
+	<tbody>
+		<% @items.each do |item| %>
+		<td><%= item.id %></td>
+		<td><%= link_to item.name, admins_item_path(item) %></td>
+		<td><%= item.unit_price %></td>
+		<td><%= item.genre_name %></td>
+		<td><% if item.is_soldout == true %>
+			販売中止
+			<% else %>
+			販売中
+			<% end %>
+		</td>
+	</tbody>
+	<% end %>
+</table>

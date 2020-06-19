@@ -25,12 +25,12 @@ Rails.application.routes.draw do
 		resource :customers
 		resources :deliveries
 		resources :items
+		resources :genres
 		get '/top' => 'homes#top'
 	end
 
 	namespace :customers do
 		resources :deliveries
-		resources :items
 	end
 
 	scope module: 'customers' do
@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
   end
+    #root 'homes#top'
+
 
 
 end

@@ -1,0 +1,15 @@
+<h4>商品詳細</h4>
+<%= attachment_image_tag @item, :image, fallback: "no_image.jpg", size:"200x200" %>
+<p>商品名　<%= @item.name %></p>
+<p>商品説明　<%= @item.description %></p>
+<p>ジャンル　<%= @genre_name %></p>
+<p>税込価格（税抜価格）　
+	<%= (@item.unit_price.to_i*1.1).floor %>(<%= @item.unit_price %>)</p>
+
+<p>販売ステータス
+	<% if  @item.is_soldout == true %>
+		販売中止
+	<% else %>
+		販売中
+	<% end %>
+</p>
