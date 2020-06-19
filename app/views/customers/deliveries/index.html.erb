@@ -1,0 +1,19 @@
+<h1>配送先登録	/一覧</h1>
+
+<%= form_with(model:@delivery, url: customers_deliveries_path, local: true) do |f| %>
+	<%= f.text_area :postcode %>
+	<%= f.text_area :address %>
+	<%= f.text_area :name %>
+	<%= f.submit "登録する" %>
+<% end %>
+
+
+<% @deliveries.each do |delivery| %>
+
+	<%= delivery.postcode %>
+	<%= delivery.address %>
+	<%= delivery.name %>
+	<%= link_to "編集", edit_customers_delivery_path(delivery) %>
+	<%= link_to "削除", customers_delivery_path(delivery), method: :delete %>
+
+<% end %>

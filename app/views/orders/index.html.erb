@@ -1,0 +1,10 @@
+<%= form_with(model:@order, url: orders_path) do |f| %>
+	<%= f.text_area :postcode, placeholder: "郵便番号"%>
+	<%= f.text_area :address, placeholder: "住所" %>
+	<%= f.text_area :name, placeholder: "名前" %>
+	<%= f.text_area :total_price, placeholder: "請求金額" %>
+	<%= f.text_area :postage, placeholder: "送料" %>
+	<%= f.text_area :order_status, placeholder: "注文ステータス" %>
+	<%= f.text_area :payment_method, placeholder: "支払い方法" %>
+	<%= f.submit "登録する" %>
+<% end %>
