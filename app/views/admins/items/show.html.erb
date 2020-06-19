@@ -7,7 +7,7 @@
 	<%= (@item.unit_price.to_i*1.1).floor %>(<%= @item.unit_price %>)</p>
 
 <p>販売ステータス
-	<% if  @item.is_soldout == 0 %>
+	<% if  @item.is_soldout == true %>
 		販売中止
 	<% else %>
 		販売中
