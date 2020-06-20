@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @address = current_customer.postcode + current_customer.address + current_customer.last_name + current_customer.first_name
+    @address = current_customer.postcode.to_s + current_customer.address.to_s
   end
 
   def create
@@ -15,6 +15,13 @@ class OrdersController < ApplicationController
   end
 
   def infomation
+    if params[:example] == 1
+      @address = current_customer.postcode + current_customer.address
+    elsif params[:example] == 2
+      @address = Delivery
+    end
+
+
   end
 
   private
