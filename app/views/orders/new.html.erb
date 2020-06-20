@@ -1,0 +1,16 @@
+<p>注文情報入力</p>
+<%= form_with url: orders_path do |f| %>
+  <p>支払い方法</p>
+  <p><%= f.radio_button :peyment_method, value="現金" %>現金</p>
+  <p><%= f.radio_button :peyment_method, value="クレジットカード" %>クレジットカード</p>
+  <p>お届け先</p>
+  <p><%= radio_button_tag :example, :example1 %>ご自身の住所</p>
+  <p><%= @address %></p>
+  <p><%= radio_button_tag :example, :example2 %>登録済み住所から選択</p>
+  <p><%=  %></p>
+  <p><%= radio_button_tag :example, :example3 %>新規住所登録</p>
+  <p><%= f.text_area :postcode, placeholder: "郵便番号"%></p>
+  <p><%= f.text_area :address, placeholder: "住所" %></p>
+  <p><%= f.text_area :name, placeholder: "名前" %></p>
+  <%= f.submit "確認画面に進む" %>
+<% end %>

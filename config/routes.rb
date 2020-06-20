@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 		resources :deliveries
 		resources :items
 		resources :genres
+		resources :orders
+
 		get '/top' => 'homes#top'
 	end
 
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
   end
     #root 'homes#top'
 
+    resources :orders
 
 
 end

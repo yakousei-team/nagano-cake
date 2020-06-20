@@ -40,6 +40,7 @@ class Customers::CartItemsController < ApplicationController
   private
 
   def setup_cart_item!
+    #送られてきたパラメータのquantityが空の場合はメッセージを表示しリダイレクトする
     redirect_to item_path(params[:cart_item][:item_id]), notice: "個数を入力してください。" if params[:cart_item][:quantity].empty?
   end
 
