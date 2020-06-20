@@ -25,14 +25,24 @@ Rails.application.routes.draw do
 		resource :customers
 		resources :deliveries
 		resources :items
+		resources :genres
+		resources :orders
+
 		get '/top' => 'homes#top'
 	end
 
 	namespace :customers do
 		resources :deliveries
-		resources :items
 	end
+
+	scope module: 'customers' do
+    delete 'cart_items/destroy_all', to: 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :items, only: [:index, :show]
+  end
     #root 'homes#top'
-    
+
+    resources :orders
+
 
 end
