@@ -1,0 +1,29 @@
+<div class ="container">
+
+<div class= "row genre-index">
+	<%= render 'homes/genre_sidebar' %>
+</div>
+
+<div class="row main-text">
+	<p>ようこそ、NaganoCakeへ！<br>
+	このサイトは、ケーキ販売のECサイトになります。<br>
+	会員でない方も商品の閲覧はできますが、<br>
+	購入には会員登録が必要になります。</p>
+</div>
+
+<div class="row recommended">
+	<h4>おすすめ商品</h4>
+		<div class="col">
+			<%= attachment_image_tag @item1, :image, fallback: "no_image.jpg", size:"200x180" %>
+			¥ <%= (@item1.unit_price).floor %>円
+		</div>
+		<div class="col">
+			<%= attachment_image_tag @item2, :image, fallback: "no_image.jpg", size:"200x180"%>
+			¥ <%= (@item2.unit_price).floor %>円
+		</div>
+		<div class="col">
+			<%= attachment_image_tag @item3, :image, fallback: "no_image.jpg", size:"200x180" %>
+			¥ <%= (@item3.unit_price).floor %>円
+		</div>
+	</div>
+</div>

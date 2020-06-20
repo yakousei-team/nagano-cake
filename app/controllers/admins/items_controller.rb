@@ -18,7 +18,7 @@ before_action :set_genres
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to request.referer
+    redirect_to admins_items_path
   end
 
   def edit

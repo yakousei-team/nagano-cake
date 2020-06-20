@@ -12,14 +12,14 @@
   </head>
 
   <header>
-     <h2>タイトルLOGO画像</h2>
+     <h2><%= link_to "タイトルLOGO画像", root_path %></h2>
      <% if customer_signed_in? %>
        <nav>
         <ul class= "main-nav">
           <li>ようこそ name さん！</li>
           <li><%= link_to "マイページ" %></li>
-          <li><%= link_to "商品一覧" %></li>
-          <li>カート</li>
+          <li><%= link_to "商品一覧", items_path %></li>
+          <li><%= link_to "カート", cart_items_path %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
         </ul>
       </nav>
@@ -37,7 +37,7 @@
       <% else %>
       <nav>
         <ul class= "main-nav">
-          <li><%= link_to "商品一覧", new_customer_registration_path %></li>
+          <li><%= link_to "商品一覧", items_path %></li>
           <li><%= link_to "新規登録", new_customer_registration_path %></li>
           <li><%= link_to "ログイン", new_customer_session_path %></li>
         </ul>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'homes#top'
+
 	devise_for :admins, skip: :all
 	devise_for :customers, skip: :all
 	devise_scope :admin do

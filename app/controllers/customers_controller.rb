@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
   	if @customer.update(is_deleted:true)
       reset_session
     @customer.update(email:"deleted_at".to_s + current_customer.email.to_s)
-  	
+
   	flash[:notice] ="ありがとうございました。またのご利用をお待ちしております。"
   	redirect_to new_customer_session_path
   end
