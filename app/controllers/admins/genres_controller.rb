@@ -1,21 +1,20 @@
 class Admins::GenresController < ApplicationController
 def index
     @genres = Genre.all
+    @genre = Genre.new
   end
 
   def new
-    @admin = Admin.find(current_customer.id)
     @genre = Genre.new
   end
 
   def create
-  	@genre = Genre.new(name: params[:name], is_deleted: params['is_deleted'])
+  	@genre = Genre.new(genre_params)
     @genre.save
     redirect_to admins_genres_path
   end
 
   def edit
-    #@admin = Admin.find(current_customer.id)
     @genre = Genre.find(params[:id])
   end
 
@@ -34,7 +33,7 @@ def index
 
   private
   def genre_params
-  	params.require(:genre).permit(genre_attributes: [:id, :name, :is_deleted])
+  	params.require(:genre).permit(:id,:name, :is_deleted)
   end
 
 end
