@@ -12,7 +12,7 @@
       <tbody>
         <% @genres.each do |genre| %>
           <tr>
-            <td class="underline">genre.name</td>
+            <td><%= genre.name %></td>
           </tr>
         <% end %>
       </tbody>
@@ -28,14 +28,14 @@
           <%= attachment_image_tag @item, :image, size: "300x300" %>
         </div>
         <div style="width:400px; height:300px; float:left;">
-          <h3><%= @item.item_name %></h3><br>
+          <h3><%= @item.name %></h3><br>
           <p><%= @item.description %></p>
           <p class="price">¥<%= (@item.unit_price*1.1).floor %>（税込）</p>
         </div>
       </div>
       <div class="col-xs-5">
       <strong class="error"><%= notice %></strong>
-        <%= form_for @cart_item, url: customers_cart_items_path(@cart_item) do |f| %>
+        <%= form_for @cart_item, url: cart_items_path(@cart_item) do |f| %>
         <%= f.hidden_field :item_id , :value => @item.id%>
         <%= f.number_field :quantity , placeholder: "個数選択", min: 1, max: 10, step:1 %>
         <%= f.submit "カートに入れる" ,class: 'btn btn-primary' %>
