@@ -6,7 +6,7 @@ class Customers::DeliveriesController < ApplicationController
 
   def create
     @delivery = Delivery.new(delivery_params)
-    # @delivery.customer_id = current_customer.id
+    @delivery.customer_id = current_customer.id
     @delivery.save
     redirect_to request.referer
   end
@@ -29,7 +29,7 @@ class Customers::DeliveriesController < ApplicationController
 
   private
     def delivery_params
-      params.require(:delivery).permit(:name, :address, :postcode)
+      params.require(:delivery).permit(:name, :address, :postcode, :customer_id)
     end
   
 end

@@ -1,12 +1,28 @@
 class Admins::OrdersController < ApplicationController
 
   def index
+  	@orders = Order.all
   end
   	
-  def index
+  def show
+  	@order = Order.find(params[:id])
+  end
+  
+  def edit
+  	@order = Order.find(params[:id])
   end
 
-  def index
+  def update
+  	@order = Order.find(params[:id])
+  	@order.save(order_params)
+  	redirect_to request.referer
   end
+
+  private
+
+  def order_params
+  	params.require(:order).permit(:address, :postcode, :name, :total_price, :postage, :order_status, :payment_method)
+  end
+
 
 end

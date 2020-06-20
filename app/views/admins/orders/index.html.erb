@@ -1,0 +1,15 @@
+<% @orders.each do |order| %>
+
+<p><%= order.created_at.strftime("%Y年%m月%d日") %></p>
+<p><%= order.postcode %></p>
+<p><%= order.address %></p>
+<p><%= order.name %></p>
+
+<% end %>
+
+<ul>
+<li>注文商品名</li>
+<li>請求金額</li>
+<li>製作ステータス</li>
+</ul>
+<p>はカートが出来上がってから？</p>
