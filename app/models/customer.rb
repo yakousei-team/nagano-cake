@@ -4,7 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
   has_many :cart_items
   has_many :orders
   has_many :deliveries
+
 end

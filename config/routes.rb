@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-	get '/top' => 'homes#top'
 
 	devise_for :admins, skip: :all
+	devise_for :customers, skip: :all
 	devise_scope :admin do
 		get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
 		post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 		get 'admins/password/new' => 'admins/passwords#new', as: 'new_admin_password'
 	end
 
-	devise_for :customers, skip: :all
+	
 	devise_scope :customer do
 		get 'customers/sign_in' => 'customers/sessions#new', as: 'new_customer_session'
 		post 'customers/sign_in' => 'customers/sessions#create', as: 'customer_session'
@@ -42,7 +42,14 @@ Rails.application.routes.draw do
   end
     #root 'homes#top'
 
+    resource :customers
+    post 'customers/edit' => 'customers#edit'
+    get 'customers/confirm' => 'customers#confirm'
+    post 'customers/confirm' => 'customers#confirm'
+    put 'customers/hide' => 'customers#hide', as:'customers_hide'
+    get '/top' => 'homes#top'
     resources :orders
+
 
 
 end
