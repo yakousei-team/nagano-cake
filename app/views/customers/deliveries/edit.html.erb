@@ -1,0 +1,7 @@
+<h1>配送先編集</h1>
+<%= form_with(model:@delivery, url: customers_delivery_path, local: true) do |f| %>
+	<%= f.text_area :postcode %>
+	<%= f.text_area :address %>
+	<%= f.text_area :name %>
+	<%= f.submit "登録する" %>
+<% end %>

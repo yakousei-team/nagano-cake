@@ -1,0 +1,38 @@
+<h4>商品新規登録</h4>
+<%= form_with model:@item, url: admins_items_path, local: true  do |f| %>
+	<div>
+		<%= attachment_image_tag @item, :image, class: "img-square",id: :img_prev, fallback: "no_image.jpg", size:"200x200" %><br>
+		<%= f.attachment_field :image, id: :item_img %>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+ 		  function readURL(input) {
+   		if (input.files && input.files[0]) {
+     	  var reader = new FileReader();
+     	  reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+     	  }
+     	 reader.readAsDataURL(input.files[0]);
+   		}
+ 	   }
+ 		$("#item_img").change(function(){
+   	 	  readURL(this);
+ 	   });
+	  });
+	</script>
+	<div>
+		<%= f.label :name, '商品名' %>
+		<%= f.text_field :name %><br>
+		<%= f.label :description, '商品説明' %>
+		<%= f.text_area :description %><br>
+		<%= f.label :genre, 'ジャンル' %>
+		<%= f.collection_select :genre_id, Genre.where(is_deleted: false), :id, :name, {include_blank: "---"} %>
+		<br>
+		<%= f.label :unit_price, '税抜価格' %>
+		<%= f.text_field :unit_price %>円<br>
+		<%= f.label :unit_price, '販売ステータス' %>
+		<%= f.select :is_soldout, {'販売中止' => true, '販売中' => false}, {include_blank: '---'} %><br>
+	</div>
+	<%= f.submit '新規登録' %>
+	<% end %>
+
