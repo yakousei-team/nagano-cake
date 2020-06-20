@@ -4,7 +4,7 @@ validates :name , presence: true
 attachment :image
 
 def genre_name
-   return genre.name
+	self.genre.name
 end
 
 end

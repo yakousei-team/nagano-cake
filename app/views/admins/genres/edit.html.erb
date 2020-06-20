@@ -3,9 +3,9 @@
   <%= f.fields_for :genre do |g| %>
 	<%= g.label :name, 'ジャンル'%>
 	<%= g.text_field :name, placeholder: @genre.name %>
-	<%= g.radio_button :is_deleted, 1 %>
+	<%= g.radio_button :is_deleted, false %>
 	<%= g.label :invalid, '有効' %>
-	<%= g.radio_button :is_deleted, 0 %>
+	<%= g.radio_button :is_deleted, true %>
 	<%= g.label :valid, '無効' %>
   <% end %>
 	<%= f.submit '変更を保存する' %>

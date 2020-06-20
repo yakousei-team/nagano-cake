@@ -26,7 +26,7 @@
 		<%= f.label :description, '商品説明' %>
 		<%= f.text_area :description %><br>
 		<%= f.label :genre, 'ジャンル' %>
-		<%= f.collection_select :genre_id, Genre.where(is_deleted: 1), :id, :name, {include_blank: "---"} %>
+		<%= f.collection_select :genre_id, Genre.where(is_deleted: false), :id, :name, {include_blank: "---"} %>
 		<br>
 		<%= f.label :unit_price, '税抜価格' %>
 		<%= f.text_field :unit_price %>円<br>
