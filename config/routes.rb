@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     put 'customers/hide' => 'customers#hide', as:'customers_hide'
     get '/top' => 'homes#top'
     resources :orders
+    post '/orders/infomation' => 'orders#infomation'
+    get 'thanks' => 'orders#thanks' #:id追加
 
 
 

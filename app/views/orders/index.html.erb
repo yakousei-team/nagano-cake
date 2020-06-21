@@ -1,18 +1,35 @@
-<p>注文情報入力</p>
-<%= form_with(model:@order, url: orders_path, local: true) do |f| %>
-  <p>支払い方法</p>
-    <ul>
-      <li><%= f.radio_button :peyment_method, "現金" %>現金</li>
-      <li><%= f.radio_button :peyment_method, "クレジットカード" %>クレジットカード</li>
-    </ul>
-  <p>ご自身の住所</p>
-  <p><%= current_customer.postcode + current_customer.address + current_customer.first_name + current_customer.last_name %>
+<h2>注文履歴一覧</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>注文日</th>
+        <th>配送先</th>
+        <th>注文商品</th>
+        <th>支払金額</th>
+        <th>ステータス</th>
+        <th>注文詳細</th>
+      </tr>
+    </thead>
 
-  </p>
-  <p>登録済みの住所から選択</p>
-  <p>新しいお届け先</p>
-  <p><%= f.text_field :postcode, placeholder: "郵便番号"%></p>
-  <p><%= f.text_field :address, placeholder: "住所" %></p>
-  <p><%= f.text_field :name, placeholder: "名前" %></p>
-  <%= f.submit "確認画面に進む" %>
-<% end %>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+        <td>
+          <%= order.postcode %><br>
+          <%= order.address %><br>
+          <%= order.name %>
+        </td>
+        <td>
+          <% order.order_items.each do |order_item| %>
+          <%= order_item.item.name %>
+          <br>
+        <% end %>
+        </td>
+        <td><%= order.total_price %></td>
+        <td><%= order.order_status %></td>
+        <td><%= link_to "表示する", order_path(order) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
