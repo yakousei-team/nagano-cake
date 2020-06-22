@@ -4,7 +4,7 @@
 <p>商品名　<%= @item.name %></p>
 <p>商品説明　<%= @item.description %></p>
 <p>ジャンル　<%= @genre_name %></p>
-<p>税込価格（税抜価格）　
+<p>税込価格（税抜価格）
 	<%= (@item.unit_price.to_i*1.1).floor %>(<%= @item.unit_price %>)円</p>
 
 <p>販売ステータス
