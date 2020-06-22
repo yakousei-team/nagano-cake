@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
 
   private
 
-  def order_params
+  def order_params #strongパラメータを検討
       params.require(:order).permit(:customer_id, :payment_method, :example, :delivery_id, :address, :postcode, :name, :total_price)
   end
 

@@ -50,8 +50,8 @@ Rails.application.routes.draw do
     get '/top' => 'homes#top'
     resources :orders
     post '/orders/infomation' => 'orders#infomation'
-    get 'thanks' => 'orders#thanks' #:id追加
-
+    get 'thanks' => 'orders#thanks'
+    patch 'production_status_update/:id' => 'admin/production_status_update#confirm'
 
 
 end
