@@ -3,13 +3,13 @@ class Admins::OrdersController < ApplicationController
   def index
   	@orders = Order.all
   end
-  	
+
   def show
   	@order = Order.find(params[:id])
     @order_items = @order.order_items
     @total = 0
   end
-  
+
   def edit
   	@order = Order.find(params[:id])
   end
@@ -32,7 +32,9 @@ class Admins::OrdersController < ApplicationController
     @order = @order_item.order #注文商品に紐付く注文テーブルを取得
     @order_item.update(order_item_params) #注文商品のステータスを更新
 
-    if @order.order_items.count == @order.order_items.where(production_status: "制作完了").count #全ての注文商品の製作ステータスが「制作完了」になった場合
+    if @order_item.production_status == "製作中" #注文商品の内、1つでも製作ステータスが「製作中」になった場合
+      @order.update(order_status: 2) #紐付いている注文ステータスを「製作中」に更新
+    elsif @order.order_items.count == @order.order_items.where(production_status: "製作完了").count #全ての注文商品の製作ステータスが「制作完了」になった場合
       @order.update(order_status: 3) #注文ステータスを「発送準備中」に更新
     end
 

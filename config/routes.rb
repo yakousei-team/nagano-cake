@@ -51,7 +51,7 @@ Rails.application.routes.draw do
     resources :orders
     post '/orders/infomation' => 'orders#infomation'
     get 'thanks' => 'orders#thanks'
-    patch 'production_status_update/:id' => 'admin/production_status_update#confirm'
+    patch 'production_status_update/:id' => 'admins/orders#production_status_update', as:'production_status_update'
 
 
 end
