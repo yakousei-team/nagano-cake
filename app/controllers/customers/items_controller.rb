@@ -2,11 +2,12 @@ class Customers::ItemsController < ApplicationController
   def index
     if params[:genre_id]
       @items = Item.where(is_soldout: false, genre_id: params[:genre_id])
+      @total_number = @items.count
     else
       @items = Item.all
+      @total_number = Item.count #countメソッドで全商品件数を取得
     end
 
-    @total_number = Item.count #countメソッドで全商品件数を取得
     @genres = Genre.where(is_deleted: false)
   end
 
