@@ -1,23 +1,7 @@
-<!-- ジャンル検索 -->
-<div>
-<table>
-  <thead>
-    <tr>
-      <th>
-        <h5>ジャンル検索</h5>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td><%= genre.name %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class= "row genre-index">
+  <%= render 'homes/genre_sidebar' %>
 </div>
-<!-- 商品一覧 -->
+
 <div>
   <h2><商品一覧<span>（全<%= @total_number %>件）</span></h2>
     <div>
@@ -27,7 +11,7 @@
           <%= attachment_image_tag item, :image, size: "170x170" %><br>
         <% end %>
           <p><%= item.name %></p>
-          <p>¥<%= (item.unit_price*1.1).floor %></p> 
+          <p>¥<%= (item.unit_price*1.1).floor %></p>
         </div>
       <% end %>
     </div>

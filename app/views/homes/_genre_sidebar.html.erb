@@ -4,7 +4,7 @@
 		</thread>
 		<tbody>
 			<% @genres.each do |genre| %>
-			<td><%= link_to genre.name, items_path, locals: {genre_id: genre.id} %></td>
+			<td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
 		</tbody>
 	<% end %>
 	</table>
