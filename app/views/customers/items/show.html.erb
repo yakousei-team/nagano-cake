@@ -1,10 +1,10 @@
 <div class="container">
-
-<div class= "row genre-index">
+  <div class="row">
+  <div class="col-md-3 sidebar" style="background-color: yellow;">
   <%= render 'homes/genre_sidebar' %>
-</div>
+  </div>
     <!-- 商品一覧 -->
-    <div>
+    <div class="col-md-9 offset-md-3">
       <div>
         <div>
           <%= attachment_image_tag @item, :image, size: "300x300" %>
@@ -25,4 +25,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

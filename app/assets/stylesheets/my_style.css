@@ -1,0 +1,48 @@
+html {
+	font-size : 100%;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	padding-top: 70px; /* navbar-fixed-top使用時にはpaddingが必要*/
+}
+
+/*  ヘッダー
+-------------------------------------------*/
+.navbar-brand a, .navbar-brand a:hover {
+	color: #d6c299;
+	text-decoration: none;
+}
+
+.navbar-nav li, .navbar-nav a, .main-nav a:hover {
+	color: #d6c299;
+	text-decoration: none;
+	margin-top: 15px;
+}
+/* メイン全体
+------------------------------------------*/
+#main {
+	min-height: 100vh;
+}
+/* ジャンルサイドバー
+------------------------------------------*/
+.sidebar {
+	text-align: center;
+	margin-top: 4%;
+	}
+/* メインコンテンツ
+------------------------------------------*/
+.main {
+	background-image: url("../..images/main-img02.jpg");
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+}
+.main-text {
+	text-align: center;
+	margin-top: 15%;
+	margin-bottom: 20%;
+}
