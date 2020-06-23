@@ -4,8 +4,8 @@ class Customers::ItemsController < ApplicationController
       @items = Item.where(is_soldout: false, genre_id: params[:genre_id])
       @total_number = @items.count
     else
-      @items = Item.all
-      @total_number = Item.count #countメソッドで全商品件数を取得
+      @items = Item.where(is_soldout: false)
+      @total_number = @items.count #countメソッドで全商品件数を取得
     end
 
     @genres = Genre.where(is_deleted: false)
