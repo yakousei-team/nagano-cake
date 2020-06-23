@@ -1,10 +1,11 @@
 <h4>商品一覧</h4>
 <div class="add_item">
-<%= link_to "+", new_admins_item_path %>
+<%= link_to "新規登録", new_admins_item_path %>
 </div>
 <table>
 	<thread>
 		<tr>
+		  <th>画像</th>
 		  <th>商品ID</th>
 		  <th>商品名</th>
 		  <th>税抜価格</th>
@@ -14,6 +15,7 @@
 	</thread>
 	<tbody>
 		<% @items.each do |item| %>
+		<td><%= attachment_image_tag item, :image, fallback: "no_image.jpg", size:"50x50" %></td>
 		<td><%= item.id %></td>
 		<td><%= link_to item.name, admins_item_path(item) %></td>
 		<td><%= (item.unit_price).to_s(:delimited) %></td>

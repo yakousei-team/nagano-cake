@@ -19,15 +19,21 @@
 		<div class="row">
 		<h4>おすすめ商品</h4>
 		  <div class="col-md-4">
+		  	<%= link_to item_path(@item1) do %>
 			<%= attachment_image_tag @item1, :image, fallback: "no_image.jpg", size:"200x180" %><br>
+			<% end %>
 			¥ <%= (@item1.unit_price).floor %>円
 		  </div>
 		  <div class="col-md-4">
+		  	<%= link_to item_path(@item2) do %>
 			<%= attachment_image_tag @item2, :image, fallback: "no_image.jpg", size:"200x180"%><br>
+			<% end %>
 			¥ <%= (@item2.unit_price).floor %>円
 		  </div>
 		  <div class="col-md-4">
+		  	<%= link_to item_path(@item3) do %>
 			<%= attachment_image_tag @item3, :image, fallback: "no_image.jpg", size:"200x180" %><br>
+			<% end %>
 			¥ <%= (@item3.unit_price).floor %>円
 		  </div>
 		</div>
