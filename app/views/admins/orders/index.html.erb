@@ -1,15 +1,21 @@
-<% @orders.each do |order| %>
-
-<p><%= order.created_at.strftime("%Y年%m月%d日") %></p>
-<p><%= order.postcode %></p>
-<p><%= order.address %></p>
-<p><%= order.name %></p>
-
-<% end %>
-
-<ul>
-<li>注文商品名</li>
-<li>請求金額</li>
-<li>製作ステータス</li>
-</ul>
-<p>はカートが出来上がってから？</p>
+<p>注文履歴一覧</p>
+<table class="table table-hover table-inverse">
+	<thead>
+		<tr>
+			<th>注文日時</th>
+			<th>購入者</th>
+			<th>注文個数</th>
+			<th>注文ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @orders.each do |order| %>
+		<tr>
+			<td><%= link_to order.created_at.strftime("%Y年%m月%d日%H時%M分"), admins_order_path(order) %></td>
+			<td><%= order.customer.last_name + order.customer.first_name %></td>
+			<td><%= order.order_items.sum(:quantity) %></td>
+			<td><%= order.order_status %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
