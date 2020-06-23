@@ -7,6 +7,8 @@
   <%= link_to "カートを空にする", cart_items_destroy_all_path(@cart_items), method: :delete %>
 </div>
 
+<h3><%= notice %></h3> <!-- カートの中身が無い状態で情報入力に進む場合 -->
+
 <table>
 <tr>
   <th>商品名</th>
@@ -49,8 +51,10 @@
   <div>
     <p>合計金額:￥<%= @total_price %></p>
   </div>
+
   <div class="offset-6">
     <%= link_to "情報入力に進む", orders_path, class: "btn btn-default" %>
   </div>
+</div>
 </div>
 </div>

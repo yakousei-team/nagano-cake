@@ -12,7 +12,8 @@ class CustomersController < ApplicationController
   	@customer = Customer.find(current_customer.id)
   	if @customer.update(is_deleted:true)
       reset_session
-    @customer.update(email:"deleted_at".to_s + current_customer.email.to_s)
+
+    @customer.update(email:Time.now.strftime('%Y%m%d_%H%M%S').to_s + current_customer.email.to_s)
 
   	flash[:notice] ="ありがとうございました。またのご利用をお待ちしております。"
   	redirect_to new_customer_session_path
@@ -21,6 +22,10 @@ class CustomersController < ApplicationController
 
   def edit
   	@customer = Customer.find(current_customer.id)
+  end
+
+  def change
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
@@ -34,7 +39,7 @@ class CustomersController < ApplicationController
 
   private
   def customer_params
-  	params.require(:customer).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:postcode,:address,:phone_number)
+  	params.require(:customer).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:postcode,:address,:phone_number,:is_deleted)
   end
 
   def screen_customer

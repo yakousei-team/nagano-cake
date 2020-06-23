@@ -1,0 +1,28 @@
+<%= form_with(model: @customer,url:customers_path(@customer), local: true)  do |f| %>
+
+<% if @customer.errors.any? %>
+  <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
+  <ul>
+    <% @customer.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, class: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" ,class: 'btn btn-success' %>
+  </div>
+<% end %>

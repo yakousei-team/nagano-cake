@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 	end
 
 	namespace :admins do
-		resource :customers
+		resources :customers
 		resources :deliveries
 		resources :items
 		resources :genres
@@ -48,9 +48,12 @@ Rails.application.routes.draw do
     post 'customers/edit' => 'customers#edit'
     get 'customers/confirm' => 'customers#confirm'
     post 'customers/confirm' => 'customers#confirm'
+    get 'customers/change' => 'customers#change'
+    post 'customers/change' => 'customers#change'
     put 'customers/hide' => 'customers#hide', as:'customers_hide'
-    get '/top' => 'homes#top'
     resources :orders
+    post '/orders/infomation' => 'orders#infomation'
+    get 'thanks' => 'orders#thanks' #:id追加
 
 
 
