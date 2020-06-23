@@ -28,6 +28,7 @@ class Customers::SessionsController < Devise::SessionsController
 
   protected
 
+
   def reject_customer
     @customer = Customer.find_by(email: params[:customer][:email].downcase)
     if @customer
@@ -35,8 +36,13 @@ class Customers::SessionsController < Devise::SessionsController
         flash[:error] = "退会済みです。"
         redirect_to new_customer_session_path
       end
-    else
+      
+      else
       flash[:error] = "必須項目を入力してください。"
     end
+  end
+  private
+  def customer_params
+    params.require(:customer).permit(:email,:last_name,:first_name,:last_name_kana,:first_name_kana,:postcode,:address,:phone_number,:is_deleted)
   end
 end
