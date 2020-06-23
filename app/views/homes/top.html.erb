@@ -1,0 +1,43 @@
+<div class ="container">
+
+  <div class= "row">
+
+	<div class="sidebar col-md-3">
+		<%= render 'homes/genre_sidebar' %>
+	</div>
+
+	<div id="main">
+			<div class="col-md-9 main-content">
+				<div class="main-text" >
+				<p class="lead">ようこそ、NaganoCakeへ！</p><br>
+				<p>このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。</p>
+				</div>
+			</div>
+	<div class="recommended col-md-offset-3 col-md-9">
+		<div class="row">
+		<h4>おすすめ商品</h4>
+		  <div class="col-md-4">
+		  	<%= link_to item_path(@item1) do %>
+			<%= attachment_image_tag @item1, :image, fallback: "no_image.jpg", size:"200x180" %><br>
+			<% end %>
+			¥ <%= (@item1.unit_price).floor %>円
+		  </div>
+		  <div class="col-md-4">
+		  	<%= link_to item_path(@item2) do %>
+			<%= attachment_image_tag @item2, :image, fallback: "no_image.jpg", size:"200x180"%><br>
+			<% end %>
+			¥ <%= (@item2.unit_price).floor %>円
+		  </div>
+		  <div class="col-md-4">
+		  	<%= link_to item_path(@item3) do %>
+			<%= attachment_image_tag @item3, :image, fallback: "no_image.jpg", size:"200x180" %><br>
+			<% end %>
+			¥ <%= (@item3.unit_price).floor %>円
+		  </div>
+		</div>
+	</div>
+	</div>
+  </div>
+</div>

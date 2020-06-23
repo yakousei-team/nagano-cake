@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'homes#top'
+
 	devise_for :admins, skip: :all
 	devise_for :customers, skip: :all
 	devise_scope :admin do
@@ -51,8 +53,8 @@ Rails.application.routes.draw do
     put 'customers/hide' => 'customers#hide', as:'customers_hide'
     resources :orders
     post '/orders/infomation' => 'orders#infomation'
-    get 'thanks' => 'orders#thanks' #:id追加
-
+    get 'thanks' => 'orders#thanks'
+    patch 'production_status_update/:id' => 'admins/orders#production_status_update', as:'production_status_update'
 
 
 end

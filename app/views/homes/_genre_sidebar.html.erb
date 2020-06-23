@@ -1,0 +1,12 @@
+<div class="genrebar">
+	<table class="table table-striped">
+		<tr>
+		  <th class="text-center">ジャンル検索</th>
+		</tr>
+		<tr>
+		  <% @genres.each do |genre| %>
+		  <td><%= link_to genre.name, items_path(genre_id: genre.id) %></td>
+		</tr>
+	<% end %>
+	</table>
+</div>

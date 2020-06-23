@@ -9,10 +9,10 @@ class Customers::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.customer_id = current_customer.id
+    @cart_item.customer_id = current_customer.id #custoer_idにログインしているcustomerのidを代入
     if current_customer.cart_items.where(item_id: @cart_item.item_id).exists? #カートの中に同じ商品があるか確認する
       @cart_item = current_customer.cart_items.find_by(item_id: @cart_item.item_id) #fand_byメソッドを使いすでにあるカート商品を取得
-      @cart_item.update(quantity: @cart_item.quantity + params[:cart_item][:quantity].to_i) # 現在の数量　＋　送られてきた数量
+      @cart_item.update(quantity: @cart_item.quantity + params[:cart_item][:quantity].to_i) # すでにあったカート商品の数量　＋　送られてきた数量
     else
       @cart_item.save
     end
@@ -32,7 +32,7 @@ class Customers::CartItemsController < ApplicationController
   end
 
   def destroy_all
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items #カート内の全ての商品を取得
     @cart_items.destroy_all #destroy_allメソッドで全てのカート内商品を消去する
     redirect_to request.referer
   end

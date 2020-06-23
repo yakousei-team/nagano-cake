@@ -9,43 +9,55 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link type="text/css" rel="stylesheet", href="my_style.css">
+
   </head>
 
   <header>
-     <h2>タイトルLOGO画像</h2>
-     <% if customer_signed_in? %>
-       <nav>
-        <ul class= "main-nav">
-          <li>ようこそ name さん！</li>
-          <li><%= link_to "マイページ", customers_path %></li>
+    <nav class="navbar navbar-expand navbar-fixed-top" style="background-color: #402717;">
+     <div class="container">
+      <div class="naavbar-header">
+        <div class="navbar-brand">
+          <%= link_to "NaganoCake", root_path %></div>
+      </div>
+
+      <div class="navbar-nav navbar-right ">
+       <% if customer_signed_in? %>
+        <ul class= "list-inline">
+          <li>ようこそ <%= current_customer.last_name + current_customer.first_name %> さん！</li>
+          <li><%= link_to "マイページ" %></li>
           <li><%= link_to "商品一覧", items_path %></li>
           <li><%= link_to "カート", cart_items_path %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
         </ul>
-      </nav>
        <% elsif admin_signed_in? %>
-       <nav>
-        <ul class= "main-nav">
+        <ul class= "list-inline">
           <li><%= link_to "商品一覧", admins_items_path %></li>
           <li><%= link_to "会員一覧", admins_customers_path %></li>
           <li><%= link_to "注文履歴一覧", admins_items_path %></li>
           <li><%= link_to "ジャンル一覧", admins_genres_path %></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         </ul>
-      </nav>
-
       <% else %>
-      <nav>
-        <ul class= "main-nav">
-          <li><%= link_to "商品一覧", new_customer_registration_path %></li>
+        <ul class= "list-inline">
+          <li>ようこそ ゲストさん！</li>
+          <li><%= link_to "商品一覧", items_path %></li>
           <li><%= link_to "新規登録", new_customer_registration_path %></li>
           <li><%= link_to "ログイン", new_customer_session_path %></li>
         </ul>
-      </nav>
       <% end %>
+    </div>
+    </div>
+    </nav>
   </header>
 
   <body>
+    <!-- flashメッセージ表示 -->
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
