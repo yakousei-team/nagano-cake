@@ -3,8 +3,11 @@ class ApplicationController < ActionController::Base
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 	protect_from_forgery with: :exception
 
+
 	def after_sign_in_path_for(resource_or_scope)
-	if admin_signed_in?
+  if admin_signed_in? && customer_signed_in?
+    new_customer_session_path
+	elsif admin_signed_in?
 		admins_top_path
 	else
 		admins_top_path
