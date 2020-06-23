@@ -2,6 +2,7 @@ class CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(current_customer.id)
+    @order = Order.where(customer_id: current_customer.id)
   end
 
   def confirm
