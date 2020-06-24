@@ -38,5 +38,5 @@
 
 
 <li><span>配送先</span><%= link_to "一覧を見る", customers_deliveries_path, class: "btn btn-outline-primary" %></li>
-<li><span>注文履歴</span><%= link_to "一覧を見る", orders_path(), class: "btn btn-outline-primary" %></li>
+<li><span>注文履歴</span><%= link_to "一覧を見る", orders_path(@order), class: "btn btn-outline-primary" %></li>
 <li><%= link_to "退会", customers_confirm_path %></li>

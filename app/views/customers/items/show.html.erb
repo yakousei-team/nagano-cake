@@ -16,6 +16,8 @@
         </div>
       </div>
       <div>
+
+      <% if customer_signed_in? %> <!--サインイン状態のみ表示 -->
       <strong><%= notice %></strong>
         <%= form_for @cart_item, url: cart_items_path(@cart_item) do |f| %>
         <%= f.hidden_field :item_id , :value => @item.id%>
@@ -23,6 +25,7 @@
         <%= f.submit "カートに入れる" ,class: 'btn btn-primary' %>
         <% end %>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
