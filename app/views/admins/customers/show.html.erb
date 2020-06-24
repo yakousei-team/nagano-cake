@@ -1,6 +1,5 @@
 <h1><%= @customer.last_name.to_s + @customer.first_name.to_s %>の会員詳細</h1>
 
-
 <table class="table">
 	<tr>
 		<th>顧客ID</th>
@@ -46,4 +45,4 @@
 </table>
 
 	<span><%= link_to "編集", edit_admins_customer_path, class: "btn btn-outline-primary" %></span>
-	<span><%= link_to "注文履歴一覧", edit_customers_path, class: "btn btn-outline-primary" %></span>
+	<span><%= link_to "注文履歴一覧", admins_customer_orders_path(@customer), class: "btn btn-outline-primary" %></span>

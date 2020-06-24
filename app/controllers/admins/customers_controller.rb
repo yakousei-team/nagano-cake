@@ -3,23 +3,20 @@ class Admins::CustomersController < ApplicationController
   def show
   	@customers = Customer.all
     @customer = Customer.find(params[:id])
-
   end
 
   def index
     @customers = Customer.all
-
   end
 
   def edit
     @customer = Customer.find(params[:id])
-    
   end
 
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-
+      flash[:notice] = "更新完了しました"
       redirect_to admins_customer_path
     else
       render 'edit'

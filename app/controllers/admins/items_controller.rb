@@ -29,6 +29,7 @@ class Admins::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
+    flash[:notice] = "更新完了しました"
     redirect_to admins_item_path
   end
 

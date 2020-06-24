@@ -11,10 +11,6 @@ class Admins::OrdersController < ApplicationController
     @total = 0
   end
 
-  def edit
-  	@order = Order.find(params[:id])
-  end
-
   def update
   	@order = Order.find(params[:id]) #注文詳細の情報を取得
     @order_items = @order.order_items #注文に紐付く注文商品を全て取得
@@ -41,6 +37,10 @@ class Admins::OrdersController < ApplicationController
 
     flash[:notice] = "更新完了しました"
     redirect_to admins_order_path(@order)
+  end
+
+  def customer_index
+    @orders = Order.where(customer_id: params[:id])
   end
 
   private

@@ -23,6 +23,7 @@ class Admins::GenresController < ApplicationController
   def update
     genre = Genre.find(params[:id])
     genre.update(genre_params)
+    flash[:notice] = "更新完了しました"
     redirect_to admins_genres_path
   end
 
