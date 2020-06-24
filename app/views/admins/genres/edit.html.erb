@@ -1,12 +1,27 @@
-<h3>ジャンル編集</h3>
+<div class ="container">
+  <div class= "row ">
+  	<div class="col-md-4">
+  	</div>
+
+  	<div class="col-md-4">
+  	<h3><mark>ジャンル編集</mark></h3>
   <%= form_with model: @admin, url: admins_genre_path(params[:id]), method: :patch, local: true do |f| %>
   <%= f.fields_for :genre do |g| %>
+  <div class="form-group">
 	<%= g.label :name, 'ジャンル'%>
 	<%= g.text_field :name, placeholder: @genre.name %>
+
 	<%= g.radio_button :is_deleted, false %>
 	<%= g.label :invalid, '有効' %>
 	<%= g.radio_button :is_deleted, true %>
 	<%= g.label :valid, '無効' %>
   <% end %>
-	<%= f.submit '変更を保存する' %>
+</div>
+<div class="form-group">
+	<%= f.submit '変更を保存する', class: "btn btn-default pull right" %>
   <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
