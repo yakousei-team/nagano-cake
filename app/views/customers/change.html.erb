@@ -1,3 +1,9 @@
+<div class="nav-img1 main-top"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <h2>パスワード変更</h2>
 <%= form_with(model: @customer,url:customers_path(@customer), local: true)  do |f| %>
 
 <% if @customer.errors.any? %>
@@ -22,7 +28,10 @@
     <%= f.password_field :password, autocomplete: "off", class: "password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" ,class: 'btn btn-success' %>
+  <div class="actions get-button">
+    <%= f.submit "変更を保存する" ,class: 'btn btn-success' %>
   </div>
 <% end %>
+</div>
+</div>
+</div>

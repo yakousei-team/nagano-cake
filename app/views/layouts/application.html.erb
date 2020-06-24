@@ -10,11 +10,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link type="text/css" rel="stylesheet", href="my_style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato&family=M+PLUS+Rounded+1c:wght@300&display=swap" rel="stylesheet">
 
   </head>
 
   <header>
+
 
     <nav class="navbar navbar-expand navbar-fixed-top" style="background-color: #402717;">
      <div class="container">
@@ -22,12 +24,19 @@
         <div class="navbar-brand">
           <%= link_to "NaganoCake", root_path %></div>
       </div>
-
-      <div class="navbar-nav navbar-right ">
+          <!-- flashメッセージ表示 -->
+      <div class="navbar-nav navbar-right">
        <% if customer_signed_in? %>
         <ul class= "list-inline">
+          <li>
+          <div class="navbar-notice">
+            <% if flash[:notice] %>
+              <p><%= flash[:notice] %></p>
+            <% end %>
+          </div>
+          </li>
           <li>ようこそ <%= current_customer.last_name + current_customer.first_name %> さん！</li>
-          <li><%= link_to "マイページ" %></li>
+          <li><%= link_to "マイページ", customers_path %></li>
           <li><%= link_to "商品一覧", items_path %></li>
           <li><%= link_to "カート", cart_items_path %></li>
           <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
@@ -54,11 +63,6 @@
   </header>
 
   <body>
-    <!-- flashメッセージ表示 -->
-    <% if flash[:notice] %>
-      <p><%= flash[:notice] %>
-    <% end %>
-
-    <%= yield %>
+   <%= yield %>
   </body>
 </html>

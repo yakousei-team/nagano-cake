@@ -1,6 +1,11 @@
+<div class="nav-img1 main-top"></div> 
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
 <h2>注文履歴詳細</h2>
-  <p>注文情報</p>
-  <table>
+  <h4>注文情報</h4>
+  <table class="table">
       <tr>
         <th>注文日</th>
         <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
@@ -23,8 +28,8 @@
       </tr>
   </table>
 
-  <p>注文内容</p>
-  <table>
+  <h4>注文内容</h4>
+  <table class="table">
     <thead>
       <tr>
         <th>商品</th>
@@ -48,8 +53,8 @@
     </tbody>
   </table>
 
-  <p>請求情報</p>
-  <table>
+  <h4>請求情報</h4>
+  <table class="table">
     <tr>
       <th>商品合計</th>
       <td><%= @total %></td>
@@ -63,3 +68,6 @@
       <td><%= (@total + @order.postage) %></td>
     </tr>
   </table>
+</div>
+</div>
+</div>

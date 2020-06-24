@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 	elsif admin_signed_in?
 		admins_top_path
 	else
-		admins_top_path
+		root_path
 	end
     end
     #sign_out後のredirect先変更する。rootパスへ。rootパスはhome topを設定済み。
