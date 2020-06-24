@@ -13,6 +13,13 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(session[:order]) #session[:order]の値を代入
 
+    #session[:delivery]が存在する場合のみ新しいお届け先を配送先に登録
+    if session[:delivery].present?
+      @delivery = Delivery.new(session[:delivery])
+      @delivery.customer_id = current_customer.id
+      @delivery.save
+    end
+
     #請求金額入力用
     total = 0
     cart_items = current_customer.cart_items #自身のカート情報を取得し代入
@@ -39,7 +46,7 @@ class OrdersController < ApplicationController
   def infomation
     @cart_items = CartItem.where(customer_id: current_customer.id) #自身のカートの中身の情報取得
     @total = 0
-    session[:order] = Order.new() #sessionデータ用
+    session[:order] = Order.new(order_params) #sessionデータ用
     session[:order][:customer_id] = current_customer.id #session[:order]の[:customer_id]に値を取得
     session[:order][:payment_method] = params[:order][:payment_method] #session[:order]の[:payment_method]に値を取得
 
@@ -56,6 +63,11 @@ class OrdersController < ApplicationController
       session[:order][:postcode] = params[:order][:postcode]
       session[:order][:address] = params[:order][:address]
       session[:order][:name] = params[:order][:name]
+      #配送先に登録用
+      session[:delivery] = Delivery.new
+      session[:delivery][:postcode] = params[:order][:postcode]
+      session[:delivery][:address] = params[:order][:address]
+      session[:delivery][:name] = params[:order][:name]
     else
       redirect_to new_order_path
     end
@@ -63,6 +75,10 @@ class OrdersController < ApplicationController
 
   def thanks
     session[:order].clear #sessionデータを削除(解放)する
+    #session[:delivery]が存在する場合,sessionデータ削除
+    if session[:delivery].present?
+      session[:delivery].clear
+    end
   end
 
   def index #注文履歴一覧画面
@@ -71,6 +87,9 @@ class OrdersController < ApplicationController
 
   def show #注文履歴詳細画面
     @order = Order.find(params[:id])
+    if current_customer.id != @order.customer_id
+      redirect_to order_path
+    end
     @order_item = @order.order_items
     @total = 0
   end
@@ -78,7 +97,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params #strongパラメータを検討
-      params.require(:order).permit(:customer_id, :payment_method, :example, :delivery_id, :address, :postcode, :name, :total_price)
+      params.require(:order).permit(:payment_method, :example, :address, :postcode, :name, :total_price)
   end
 
   def correct_customer

@@ -76,11 +76,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_233857) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
     t.string "name", null: false
