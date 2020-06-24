@@ -1,52 +1,64 @@
-<%= form_with model: @customer,url:admins_customer_path, local: true  do |f| %>
+div class ="container">
+  <div class= "row ">
+    <div class="col-md-4"></div>
 
-<% if @customer.errors.any? %>
-  <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+    <div class="col-md-4">
+      <h3><mark><%= @customer.last_name.to_s + @customer.first_name.to_s %>の会員情報編集</mark></h3>
+      <br><br>
 
-<div class="field">
-    <%= f.label :"氏名" %><br />
-    <%= f.text_field :last_name, autofocus: true, class: "name" %>
-    <%= f.text_field :first_name, autofocus: true, class: "name" %>
+      <div class="form-group">
+        <%= form_with model: @customer,url:admins_customer_path, local: true  do |f| %>
+
+        <% if @customer.errors.any? %>
+        <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+        <% end %>
+
+        <div class="form-group">
+          <%= f.label :"氏名" %><br />
+          <%= f.text_field :last_name, autofocus: true, class: "name", placeholder:" 例）姓" %>
+          <%= f.text_field :first_name, autofocus: true, class: "name", placeholder:" 例）名" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :"フリガナ" %><br />
+          <%= f.text_field :last_name_kana, autofocus: true, class: "name", placeholder:" 例）姓（カナ）" %>
+          <%= f.text_field :first_name_kana, autofocus: true, class: "name", placeholder:" 例）名（カナ）" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :"郵便番号" %><br />
+          <%= f.text_field :postcode, placeholder:" 例）111-11111" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :"住所" %><br />
+          <%= f.text_field :address, placeholder:" 例）東京都" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :"電話番号" %><br />
+          <%= f.text_field :phone_number, placeholder:" 例）03-1111-1111" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :"メールアドレス" %><br />
+          <%= f.email_field :email, placeholder:" 例）xxxxxxxx.gmail.com", class: "email" %>
+        </div>
+
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :invalid, '有効' %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :valid, '退会済み' %>
+
+        <div class="actions">
+          <%= f.submit "変更を保存する" ,class: 'btn btn-success' %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"フリガナ" %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
-    <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"郵便番号" %><br />
-    <%= f.text_field :postcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"住所" %><br />
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"電話番号" %><br />
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, class: "email" %>
-  </div>
-
-  <%= f.radio_button :is_deleted, false %>
-  <%= f.label :invalid, '有効' %>
-  <%= f.radio_button :is_deleted, true %>
-  <%= f.label :valid, '退会済み' %>
-  
-  <div class="actions">
-    <%= f.submit "変更を保存する" ,class: 'btn btn-success' %>
-  </div>
-  <% end %>

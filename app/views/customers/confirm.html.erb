@@ -1,6 +1,27 @@
+<div class="nav-img1 main-top"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-5 confirm-box">
 
-
-<% if customer_signed_in? && @customer.id == current_customer.id %>
-        <%= link_to "退会", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-outline-danger" %>
-        <li><%= link_to "退会しない", customers_path, class: "btn btn-outline-primary" %></li>
-<% end %>
+    	<div class="confirm-text text-center">
+    		<h4>本当に退会しますか？</h4><br><br>
+    		<p>退会すると、会員登録情報や<br>
+    		　　これまでの購入履歴が閲覧できなくなります。<br>
+    			退会する場合は、「退会する」をクリックしてください。</p>
+    	</div>
+    </div>
+	</div>
+  		<div class="row">
+    	<div class="col-md-4"></div>
+    	<div class="col-md-3">
+    		<div class="get-button customer-edits sideby">
+				<% if customer_signed_in? && @customer.id == current_customer.id %>
+		    		<%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
+        			<%= link_to "退会", customers_hide_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger conf-button" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>

@@ -1,37 +1,62 @@
-<div class ="container">
+<div id="carouselExample" class="carousel slide main-top" data-ride="carousel"> <!-- default 5000 -->
+<!-- キャプション -->
+<div class="carousel-caption">
+		<div class="main-text" >
+				<h1>ようこそ、NaganoCakeへ！</h1><br>
+				<p>このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要になります。</p>
+		</div>
+</div>
 
+<!-- スライド画像 -->
+<div class="carousel-inner">
+	<div class="item active">
+		<div class="carousel-item carousel-image-1 active"></div>
+	</div>
+	<div class="item">
+		<div class="carousel-item carousel-image-2 active"></div>
+	</div>
+	<div class="item">
+		<div class="carousel-item carousel-image-3 active"></div>
+	</div>
+</div>
+
+</div>
+
+<div class="mid-navbar" style="background-color: #402717;">
+	<p class="scroll text-center">
+		<span>▼&nbsp;&nbsp;</span>
+		<span>Featured Product</span>
+		<span>&nbsp;&nbsp;▼</span></p>
+</div>
+<!-- サイドバー -->
+<div class ="container main">
   <div class= "row">
 
 	<div class="sidebar col-md-3">
 		<%= render 'homes/genre_sidebar' %>
 	</div>
 
-	<div id="main">
-			<div class="col-md-9 main-content">
-				<div class="main-text" >
-				<p class="lead">ようこそ、NaganoCakeへ！</p><br>
-				<p>このサイトは、ケーキ販売のECサイトになります。<br>
-				会員でない方も商品の閲覧はできますが、<br>
-				購入には会員登録が必要になります。</p>
-				</div>
-			</div>
-	<div class="recommended col-md-offset-3 col-md-9">
+	<div class="recommended col-md-9">
+
 		<div class="row">
+
 		<h4>おすすめ商品</h4>
 		  <div class="col-md-4">
-		  	<%= link_to item_path(@item1) do %>
+		  <%= link_to item_path(@item1) do %>
 			<%= attachment_image_tag @item1, :image, fallback: "no_image.jpg", size:"200x180" %><br>
 			<% end %>
 			¥ <%= (@item1.unit_price).floor %>円
 		  </div>
 		  <div class="col-md-4">
-		  	<%= link_to item_path(@item2) do %>
+		  <%= link_to item_path(@item2) do %>
 			<%= attachment_image_tag @item2, :image, fallback: "no_image.jpg", size:"200x180"%><br>
 			<% end %>
 			¥ <%= (@item2.unit_price).floor %>円
 		  </div>
 		  <div class="col-md-4">
-		  	<%= link_to item_path(@item3) do %>
+		  <%= link_to item_path(@item3) do %>
 			<%= attachment_image_tag @item3, :image, fallback: "no_image.jpg", size:"200x180" %><br>
 			<% end %>
 			¥ <%= (@item3.unit_price).floor %>円
@@ -40,4 +65,4 @@
 	</div>
 	</div>
   </div>
-</div>
+

@@ -1,4 +1,13 @@
-<h4>ジャンル一覧・追加</h4>
+<div class ="container">
+  <div class= "row">
+  	<div class="col-md-5">
+
+<h3><mark>ジャンル一覧・追加</mark></h3>
+
+</div>
+
+  	<div class="col-md-11">
+  		<div class="form-group">
 
   <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
 	<%= f.label :name, 'ジャンル'%>
@@ -7,10 +16,15 @@
 	<%= f.label :invalid, '有効' %>
 	<%= f.radio_button :is_deleted, true %>
 	<%= f.label :valid, '無効' %>
-	<%= f.submit '追加' %>
+	<%= f.submit '追加', class: "btn btn-default" %>
   <% end %>
+</div>
+</div>
+<div class="form-group">
 
-<table class="">
+<div class="col-md-5">
+
+<table class="table table-hover table-inverse">
   <thread>
 	<tr>
 		<th>ジャンル</th>
@@ -28,10 +42,14 @@
 				有効
 			<% end%>
 		</td>
-		<td><%= button_to "編集する", edit_admins_genre_path(genre), {method: :get} %><td>
+		<td><%= button_to "編集する", edit_admins_genre_path(genre), {method: :get} %></td>
 		<td><%= link_to "テストのため削除", admins_genre_path(genre), {method: :delete} %></td>
 	</tr>
 
 	<% end %>
   </tbody>
 </table>
+</div>
+</div>
+</div>
+</div>

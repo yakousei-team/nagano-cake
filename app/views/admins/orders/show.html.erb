@@ -1,22 +1,30 @@
-<p>注文履歴詳細</p>
+<div class ="container">
+  <div class= "row ">
+    <div class="col-md-4">
+    </div>
+
+    <div class="col-md-4">
+    <h3>
+      <mark>注文履歴詳細</mark>
+    </h3>
 <table class="table">
   <thead>
     <tr>
-      <th>購入者</th>
-      <th><%= @order.customer.last_name + @order.customer.first_name %></th>
+      <th height="45">購入者</th>
+      <th height="45"><%= @order.customer.last_name + @order.customer.first_name %></th>
     </tr>
     <tr>
-      <th>配達先</th>
-      <th><%= @order.postcode %><%= @order.address %><%= @order.name %>
+      <th height="45">配達先</th>
+      <th height="45"><%= @order.postcode %><%= @order.address %><%= @order.name %>
       </th>
     </tr>
     <tr>
-      <th>支払い方法</th>
-      <th><%= @order.payment_method %></th>
+      <th height="45">支払い方法</th>
+      <th height="45"><%= @order.payment_method %></th>
     </tr>
     <tr>
-      <th>注文ステータス</th>
-      <th>
+      <th height="45">注文ステータス</th>
+      <th height="45">
         <%= form_for @order, url: admins_order_path do |f| %>
         <%= f.select :order_status, ["入金待ち", "入金確認", "製作中", "発送準備中", "発送済"] %>
         <%= f.submit "更新"%>
@@ -25,10 +33,11 @@
     </tr>
   </thead>
 </table>
+</div>
 
 
 
-
+<div class="col-md-2" >
 <p>注文内容</p>
   <table>
     <thead>
@@ -76,3 +85,6 @@
     </thead>
   </table>
   <% end %>
+</div>
+</div>
+</div>
