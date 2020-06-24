@@ -1,3 +1,4 @@
+<div class="nav-img1 main-top"></div>
 <div class ="container-fluid">
   <div class= "row">
   <div class="col-md-3 sidebar">
@@ -6,8 +7,9 @@
 
   <div class="col-md-9 offset-md-3">
     <!-- 販売件数 -->
-    <h2 class="px-3">商品一覧<span>（全<%= @total_number %>件）</span></h2>
-    <!-- 登録商品一覧,画像をクリックしたら商品詳細画面へ遷移 -->
+    <h3 class="px-3">商品一覧<span>（全<%= @total_number %>件）</span></h3>
+        <!-- 登録商品一覧,画像をクリックしたら商品詳細画面へ遷移 -->
+        <br>
       <div class="row">
         <% @items.each do |item| %>
           <div class="box col-md-3 mt-3">
