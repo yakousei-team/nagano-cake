@@ -18,7 +18,7 @@
   <header>
 
 
-    <nav class="navbar navbar-expand navbar-fixed-top" style="background-color: #402717;">
+    <nav class="navbar navbar-expand">
      <div class="container">
       <div class="naavbar-header">
         <div class="navbar-brand">
@@ -29,11 +29,7 @@
        <% if customer_signed_in? %>
         <ul class= "list-inline">
           <li>
-          <div class="navbar-notice">
-            <% if flash[:notice] %>
-              <p><%= flash[:notice] %></p>
-            <% end %>
-          </div>
+
           </li>
           <li>ようこそ <%= current_customer.last_name + current_customer.first_name %> さん！</li>
           <li><%= link_to "マイページ", customers_path %></li>
@@ -61,8 +57,12 @@
     </div>
     </nav>
   </header>
-
   <body>
+   <div class="navbar-notice">
+            <% if flash[:notice] %>
+              <p><%= flash[:notice]%></p>
+            <% end %>
+          </div>
 
    <%= yield %>
 

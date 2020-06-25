@@ -14,6 +14,9 @@ body {
 -------------------------------------------*/
 .navbar {
 	margin-bottom: 0 !important;
+	border: none !important;
+	border-bottom: 14px solid #402717 !important;
+	border-radius: 0 !important;
 }
 .navbar-brand a, .navbar-brand a:hover {
 	color: #402717;
@@ -22,12 +25,19 @@ body {
 	font-family: 'Dancing Script', cursive;
 }
 
-.navbar-nav li, .navbar-nav a, .navbar-nav a:hover, .main-nav a:hover, .navbar-notice {
+.navbar-nav li, .navbar-nav a, .navbar-nav a:hover, .main-nav a:hover {
 	color: #402717;
 	text-decoration: none;
 	margin-top: 17px;
 	margin-left: 20px;
 	font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+.navbar-notice {
+	position: absolute;
+	height: 20px;
+	color: red;
+	padding-top: 5%;
+	padding-left: 4%;
 }
 /* HOME画像
 ------------------------------------------*/
@@ -75,11 +85,6 @@ body {
 	margin-bottom: 20%;
 	letter-spacing: 0.2em
 }
-.main-top {
-	border-top-width: 14px;
-	border-top-color: #402717;
-	border-top-style: solid;
-}
 
 /* ジャンルサイドバー
 ------------------------------------------*/
@@ -90,7 +95,7 @@ body {
 /* 各ページ メインコンテンツ部分
 ------------------------------------------*/
 .nav-img1 {
-	height: 95px;
+	height: 110px;
 	width: 100%;
 	background-image: url('main-img03.jpg');
 	background-size: cover;
@@ -101,10 +106,10 @@ body {
 .sideby {
 	display: inline-block;
 }
-.submit{
-	margin-top: 20px;
+.get-button { /* ボタン位置調整用 */
+	margin-top: 10px;
 }
-.customer-edits .sideby {
+.customer-edits .sideby { /* マイページボタン位置調整用 */
 	margin-left: 5px;
 	margin-bottom: 15px;
 }
@@ -129,17 +134,13 @@ body {
 .links-inbox {
 	padding-top: 30px;
 }
-.get-button {
-	margin-top: 10px;
-}
-
 table .th-mypage {
 	background-color: lightgray;
 	width: 30%;
 }
 /* 退会ページ
 ----------------------------------*/
-.confirm-box {
+.confirm-text {
 	margin-top: 13%;
 }
 .conf-button {

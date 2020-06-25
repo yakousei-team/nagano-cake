@@ -1,4 +1,4 @@
-<div class="nav-img1 main-top"></div>
+<div class="nav-img1"></div>
 <div class="container">
   <div class="row frame">
     <div class="col-md-3"></div>
@@ -8,10 +8,10 @@
           <%= form_with(model: @order, url: orders_infomation_path, method: :post, local: true) do |f| %>
           <div class="col-md-12">
             <h4>支払い方法</h4>
-              <div class="col-md-2 sideby">
-                <%= f.radio_button :payment_method, :銀行振込, checked: "checked", class: "form-controll" %>銀行振込</div>
-              <div class="col-md-4 sideby">
-                <%= f.radio_button :payment_method, :クレジットカード, class: "form-controll" %>クレジットカード</div>
+              <div class="form-inline">
+                <%= f.radio_button :payment_method, :銀行振込, checked: "checked", class: "form-controll col-md-2" %>銀行振込
+                <%= f.radio_button :payment_method, :クレジットカード, class: "form-controll col-md-4" %>クレジットカード
+              </div>
 
           <br>
           <div class="col-md-12">
@@ -40,13 +40,14 @@
 
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-3 submit">
-              <%= f.submit "確認画面に進む", class: "btn btn-success submit" %>
+            <div class="col-md-3">
+              <%= f.submit "確認画面に進む", class: "btn btn-success" %>
               <% end %>
             </div>
         </div>
       </div>
       </div>
   </div>
+</div>
 </div>
 </div>
