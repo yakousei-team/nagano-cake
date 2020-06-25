@@ -30,15 +30,25 @@ class Customers::SessionsController < Devise::SessionsController
 
 
   def reject_customer
-    @customer = Customer.find_by(email: params[:customer][:email].downcase)
-    if @customer
-      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+    customer = Customer.find_by(email: params[:customer][:email], is_deleted: false)
+    if customer
+      return
+    end
+    customers = Customer.where(#後方一致しているemailをメールアドレスからとってきている
+      "email LIKE ?",
+      "%#{params[:customer][:email]}"
+    ).where(is_deleted: true)
+    if customers.empty?
+      flash[:error] = "必須項目を入力してください。"
+      return
+    end
+    #同一アドレスで複数回、登録・退会できるためeachで確認している
+    customers.each do |customer|#入力値と取り除いたemailの比較をしている
+      email = customer.email.gsub(/^[0-9]{8}_[0-9]{6}/, "")#文字列から退会用定型文を取り除いたもの
+      if email == params[:customer][:email]
         flash[:error] = "退会済みです。"
         redirect_to new_customer_session_path
       end
-      
-      else
-      flash[:error] = "必須項目を入力してください。"
     end
   end
   private
