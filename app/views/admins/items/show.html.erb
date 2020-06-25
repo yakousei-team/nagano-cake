@@ -1,18 +1,45 @@
-<h4>商品詳細</h4>
+<div class ="container">
+  <div class= "row ">
+  	<div class="col-md-4">
+  	</div>
 
+  	<div class="col-md-4">
+  	<h3>
+  		<mark>商品詳細</mark>
+  	</h3>
+<div class="form-group text-center">
 <%= attachment_image_tag @item, :image, fallback: "no_image.jpg", size:"200x200" %>
-<p>商品名　<%= @item.name %></p>
-<p>商品説明　<%= @item.description %></p>
-<p>ジャンル　<%= @genre_name %></p>
-<p>税込価格（税抜価格）
-	<%= (@item.unit_price.to_i*1.1).floor %>(<%= @item.unit_price %>)円</p>
-
-<p>販売ステータス
+</div>
+<table class="table">
+	<tr>
+		<th height="45" >商品名</th>
+		<th height="45" >　<%= @item.name %></th>
+	</tr>
+	<tr>
+		<th height="45" >商品説明</th>
+		<th height="45" ><%= @item.description %></th>
+	</tr>
+	<tr>
+		<th height="45" >ジャンル</th>
+		<th height="45" ><%= @genre_name %></th>
+	</tr>
+	<tr>
+		<th height="45" >税込価格（税抜価格）</th>
+		<th height="45" ><%= (@item.unit_price.to_i*1.1).floor %>(<%= @item.unit_price %>)円</th>
+	</tr>
+	<tr>
+		<th height="45" >販売ステータス</th>
+		<th height="45" >
 	<% if  @item.is_soldout == true %>
 		販売中止
 	<% else %>
 		販売中
 	<% end %>
-</p>
+</th>
+</tr>
+</table>
 
-<%= link_to "編集する", edit_admins_item_path %>
+<%= link_to "編集する", edit_admins_item_path, class: "btn btn-default pull right" %>
+</div>
+</div>
+</div>

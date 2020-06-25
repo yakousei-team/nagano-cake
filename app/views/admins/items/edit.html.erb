@@ -1,8 +1,19 @@
-<h4>商品編集</h4>
+<div class ="container">
+  <div class= "row ">
+  	<div class="col-md-4">
+  	</div>
+
+  	<div class="col-md-4">
+  	<h3>
+  		<mark>商品編集</mark>
+  	</h3>
 
 <%= form_with model:@item, url: admins_item_path, method: :patch, local: true  do |f| %>
-	<div>
+<div class="form-group">
 		<%= attachment_image_tag @item, :image, class: "img-square",id: :img_prev, fallback: "no_image.jpg", size:"200x200" %><br>
+	</div>
+<div class="form-group">
+
 		<%= f.attachment_field :image, id: :item_img %>
 	</div>
 	<script type="text/javascript">
@@ -23,18 +34,34 @@
 	</script>
 <div>
 <div>
+</div>
+<div class="form-group">
 		<%= f.label :name, '商品名' %>
-		<%= f.text_field :name %><br>
-		<%= f.label :description, '商品説明' %>
-		<%= f.text_area :description %><br>
-		<%= f.label :genre, 'ジャンル' %>
-		<%= f.collection_select :genre_id, Genre.where(is_deleted: 1), :id, :name, {include_blank: "---"} %>
-		<br>
-		<%= f.label :unit_price, '税抜価格' %>
-		<%= f.text_field :unit_price %>円<br>
-		<%= f.label :unit_price, '販売ステータス' %>
-		<%= f.select :is_soldout, {'販売中止' => true, '販売中' => false}, {include_blank: '---'} %><br>
+		<%= f.text_field :name, placeholder:" 例）ケーキ", class: "form-control offset-1 col-5" %><br>
 	</div>
+<div class="form-group">
+		<%= f.label :description, '商品説明' %>
+		<%= f.text_area :description, placeholder:" 例）50文字以内", class: "form-control offset-1 col-5" %><br>
+	</div>
+<div class="form-group">
+		<%= f.label :genre, 'ジャンル' %>
+		<%= f.collection_select :genre_id, Genre.where(is_deleted: false), :id, :name, {include_blank: "---選択必須---"}, class: "form-control offset-1 col-5" %>
+		<br>
+	</div>
+<div class="form-group">
+		<%= f.label :unit_price, '税抜価格(円)' %>
+		<%= f.text_field :unit_price, placeholder:" 例）2,000", class: "form-control offset-1 col-4" %><br>
+	</div>
+<div class="form-group">
+		<%= f.label :unit_price, '販売ステータス' %>
+		<%= f.select :is_soldout, {'販売中止' => true, '販売中' => false}, {include_blank: '---選択必須---'}, class: "form-control" %><br>
 
-<%= f.submit "変更を保存" %>
+	<div class="actions">
+
+<%= f.submit "変更を保存", class: "btn btn-default pull right" %>
 <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -1,10 +1,5 @@
-<div class="nav-img1"></div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
 <h2>注文履歴一覧</h2>
-  <table class="table">
+  <table>
     <thead>
       <tr>
         <th>注文日</th>
@@ -33,11 +28,8 @@
         </td>
         <td><%= order.total_price %></td>
         <td><%= order.order_status %></td>
-        <td><%= link_to "表示する", order_path(order) %></td>
+        <td><%= link_to "注文詳細", admins_order_path(order) %></td>
       </tr>
       <% end %>
     </tbody>
   </table>
-</div>
-</div>
-</div>

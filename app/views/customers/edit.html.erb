@@ -1,55 +1,60 @@
-<%= form_with(model: @customer,url:customers_path(@customer), local: true)  do |f| %>
+<div class="nav-img1"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <h2>登録情報編集</h2>
+      <div class="form-group">
+        <%= form_with(model: @customer,url:customers_path(@customer), local: true)  do |f| %>
 
-<% if @customer.errors.any? %>
-  <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
-  <ul>
-    <% @customer.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+        <% if @customer.errors.any? %>
+        <h3><%= @customer.errors.count %>error occurrence</h3><!--エラーメッセ-->
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+        </ul>
+        <% end %>
+
+  <div class="field form-inline">
+    <%= f.label :last_name, '（姓）' %><br />
+    <%= f.text_field :last_name, autofocus: true, class: "name form-control" %>
+    <%= f.label :first_name, '（名）' %><br />
+    <%= f.text_field :first_name, autofocus: true, class: "name form-control" %>
+  </div><br>
+
+  <div class="field form-inline">
+    <%= f.label :last_name_kana,'（姓）かな' %><br />
+    <%= f.text_field :last_name_kana, autofocus: true, class: "name form-control" %>
+    <%= f.label :first_name_kana,'（名）かな' %><br />
+    <%= f.text_field :first_name_kana, autofocus: true, class: "name form-control" %>
+  </div><br>
+
+  <div class="field">
+    <%= f.label :email, 'メールアドレス' %><br />
+    <%= f.email_field :email, class: "email form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode, '郵便番号' %><br />
+    <%= f.text_field :postcode, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address,'住所' %><br />
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number, '電話番号' %><br />
+    <%= f.text_field :phone_number, class: "form-control" %>
+  </div>
+
+  <div class="actions get-button">
+    <%= f.submit "編集内容を保存する" ,class: 'btn btn-success' %>
+    <%= link_to "退会する", customers_confirm_path, class: 'btn btn-danger pull-right' %>
+  </div>
 <% end %>
-
-<div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name_kana %><br />
-    <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name_kana %><br />
-    <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, class: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :postcode %><br />
-    <%= f.text_field :postcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" ,class: 'btn btn-success' %>
-  </div>
-<% end %>
+</div>
+</div>
+</div>

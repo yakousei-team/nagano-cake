@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
   	@orders = Order.all
@@ -8,10 +9,6 @@ class Admins::OrdersController < ApplicationController
   	@order = Order.find(params[:id])
     @order_items = @order.order_items
     @total = 0
-  end
-
-  def edit
-  	@order = Order.find(params[:id])
   end
 
   def update
@@ -40,6 +37,10 @@ class Admins::OrdersController < ApplicationController
 
     flash[:notice] = "更新完了しました"
     redirect_to admins_order_path(@order)
+  end
+
+  def customer_index
+    @orders = Order.where(customer_id: params[:id])
   end
 
   private

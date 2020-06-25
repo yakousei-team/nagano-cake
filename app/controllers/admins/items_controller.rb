@@ -1,5 +1,6 @@
 class Admins::ItemsController < ApplicationController
-before_action :set_genres
+  before_action :authenticate_admin!
+  before_action :set_genres
 
   def index
     @items = Item.all
@@ -18,7 +19,7 @@ before_action :set_genres
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to admins_items_path
+    redirect_to admins_item_path(@item)
   end
 
   def edit
@@ -28,6 +29,7 @@ before_action :set_genres
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
+    flash[:notice] = "更新完了しました"
     redirect_to admins_item_path
   end
 

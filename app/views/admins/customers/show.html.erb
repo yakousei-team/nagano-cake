@@ -1,49 +1,60 @@
-<h1><%= @customer.last_name.to_s + @customer.first_name.to_s %>の会員詳細</h1>
+<div class ="container">
+	<div class= "row ">
+		<div class="col-md-4"></div>
 
+		<div class="col-md-4">
+			<h3><mark><%= @customer.last_name.to_s + @customer.first_name.to_s %>の会員詳細</mark></h3>
+			<br><br>
 
-<table class="table">
+			<div class="form-group text-center">
+				<table class="table">
+					<tr>
+						<th height="45" >顧客ID</th>
+						<th height="45" ><%= @customer.id %>
+							<% if @customer.is_deleted == true %>
+							退会済み
+							<% else %>
+							有効
+							<% end %>
+						</th>
+					</tr>
+
+					<tr>
+						<th height="45" >氏名</th>
+						<th height="45" ><%= @customer.last_name.to_s + " " + @customer.first_name.to_s %></th>
+					</tr>
+
+					<tr>
+						<th height="45" >カナ</th>
+						<th height="45" ><%= @customer.last_name_kana.to_s + " " + @customer.first_name_kana.to_s %></th>
+					</tr>
+
 	<tr>
-		<th>顧客ID</th>
-		<th><%= @customer.id %>
-			<% if @customer.is_deleted == true %>
-			退会済み
-			<% else %>
-			有効
-			<% end %>
-		</th>
+		<th height="45" >郵便番号</th>
+		<th height="45" ><%= @customer.postcode %></th>
 	</tr>
 
 	<tr>
-		<th>氏名</th>
-		<th><%= @customer.last_name.to_s + " " + @customer.first_name.to_s %></th>
+		<th height="45" >住所</th>
+		<th height="45" ><%= @customer.address %></th>
 	</tr>
 
 	<tr>
-		<th>カナ</th>
-		<th><%= @customer.last_name_kana.to_s + " " + @customer.first_name_kana.to_s %></th>
+		<th height="45" >電話番号</th>
+		<th height="45" ><%= @customer.phone_number %></th>
 	</tr>
 
 	<tr>
-		<th>郵便番号</th>
-		<th><%= @customer.postcode %></th>
-	</tr>
-
-	<tr>
-		<th>住所</th>
-		<th><%= @customer.address %></th>
-	</tr>
-
-	<tr>
-		<th>電話番号</th>
-		<th><%= @customer.phone_number %></th>
-	</tr>
-
-	<tr>
-		<th>メールアドレス</th>
-		<th><%= @customer.email %></th>
+		<th height="45" >メールアドレス</th>
+		<th height="45" ><%= @customer.email %></th>
 	</tr>
 
 </table>
 
-	<span><%= link_to "編集", edit_admins_customer_path, class: "btn btn-outline-primary" %></span>
-	<span><%= link_to "注文履歴一覧", edit_customers_path, class: "btn btn-outline-primary" %></span>
+<%= link_to "編集", edit_admins_customer_path, class: "btn btn-default pull right" %>
+<%= link_to "注文履歴一覧", admins_customer_orders_path(@customer), class: "btn btn-default pull right" %>
+</div>
+</div>
+</div>
+</div>
+

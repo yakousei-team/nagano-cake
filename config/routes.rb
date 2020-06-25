@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 		resources :orders
 
 		get '/top' => 'homes#top'
+    get '/customer/:id/orders' => 'orders#customer_index', as:'customer_orders'
 	end
 
 	namespace :customers do

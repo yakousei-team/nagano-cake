@@ -1,7 +1,9 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_customer!
 
   def show
     @customer = Customer.find(current_customer.id)
+    @order = Order.where(customer_id: current_customer.id)
   end
 
   def confirm
@@ -16,7 +18,7 @@ class CustomersController < ApplicationController
     @customer.update(email:Time.now.strftime('%Y%m%d_%H%M%S_').to_s + current_customer.email.to_s)
 
   	flash[:notice] ="ありがとうございました。またのご利用をお待ちしております。"
-  	redirect_to new_customer_session_path
+  	redirect_to root_path
   end
   end
 
@@ -31,7 +33,7 @@ class CustomersController < ApplicationController
   def update
   	@customer = Customer.find(current_customer.id)
   	if @customer.update(customer_params)
-  		redirect_to admins_top_path
+  		redirect_to customers_path
   	else
   		render 'edit'
     end
