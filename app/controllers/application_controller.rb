@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
     end
     #sign_out後のredirect先変更する。rootパスへ。rootパスはhome topを設定済み。
     def after_sign_out_path_for(resource_or_scope)
-      if destroy_customer_session_path
-        new_customer_session_path
-      elsif destroy_admin_session_path
+      if resource_or_scope == :admin
         new_admin_session_path
+      else
+        new_customer_session_path
       end
     end
 

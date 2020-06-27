@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
   	if @customer.update(is_deleted:true)
       reset_session
 
-    @customer.update(email:Time.now.strftime('%Y%m%d_%H%M%S').to_s + current_customer.email.to_s)
+    @customer.update(email:Time.now.strftime('%Y%m%d_%H%M%S_').to_s + current_customer.email.to_s)
 
   	flash[:notice] ="ありがとうございました。またのご利用をお待ちしております。"
   	redirect_to root_path
