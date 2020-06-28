@@ -1,16 +1,53 @@
-<p>注文情報入力</p>
-<%= form_with(model: @order, url: orders_infomation_path, method: :post, local: true) do |f| %>
-  <p>支払い方法</p>
-  <p><%= f.radio_button :payment_method, :銀行振込 %>銀行振込</p>
-  <p><%= f.radio_button :payment_method, :クレジットカード %>クレジットカード</p>
-  <p>お届け先</p>
-  <p><%= radio_button_tag :example, 1 %>ご自身の住所</p>
-  <p><%= @address %></p>
-  <p><%= radio_button_tag :example, 2 %>登録済住所から選択</p>
-  <p><%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :customers_information %></p>
-  <p><%= radio_button_tag :example, 3 %>新しいお届け先</p>
-  <p><%= f.text_area :postcode, placeholder: "郵便番号"%></p>
-  <p><%= f.text_area :address, placeholder: "住所" %></p>
-  <p><%= f.text_area :name, placeholder: "名前" %></p>
-  <%= f.submit "確認画面に進む" %>
-<% end %>
+<div class="nav-img1"></div>
+<div class="container">
+  <div class="row frame">
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+      <h3>注文情報入力</h3><br>
+        <div class="row">
+          <%= form_with(model: @order, url: orders_infomation_path, method: :post, local: true) do |f| %>
+          <div class="col-md-12">
+            <h4>支払い方法</h4>
+              <div class="form-inline">
+                <%= f.radio_button :payment_method, :銀行振込, checked: "checked", class: "form-controll col-md-2" %>銀行振込
+                <%= f.radio_button :payment_method, :クレジットカード, class: "form-controll col-md-4" %>クレジットカード
+              </div>
+
+          <br>
+          <div class="col-md-12">
+            <div class="row">
+              <h4>お届け先</h4>
+              <div class="col-md-5">
+                <div class="select-ad">
+                  <%= radio_button_tag :example, 1, checked: "checked"%>ご自身の住所<br>
+                  <%= @address %>
+                </div><br>
+                <div class="selct-ad">
+                  <%= radio_button_tag :example, 2 %>登録済住所から選択<br>
+                  <%= f.collection_select :delivery_id, Delivery.where(customer_id: current_customer.id), :id, :customers_information %>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                 <%= radio_button_tag :example, 3 %>新しいお届け先<br>
+                 <div class="form-group">
+                    <%= f.text_field :postcode, placeholder: "郵便番号", class: "form-controll" %>
+                    <%= f.text_area :address, placeholder: "住所", class: "form-controll" %>
+                    <%= f.text_field :name, placeholder: "名前", class: "form-controll" %>
+                </div>
+              </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+              <%= f.submit "確認画面に進む", class: "btn btn-success" %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>

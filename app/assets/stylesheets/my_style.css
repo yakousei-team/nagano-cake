@@ -7,42 +7,148 @@ html {
 	box-sizing: border-box;
 }
 body {
-	padding-top: 70px; /* navbar-fixed-top使用時にはpaddingが必要*/
+	font-family: 'M PLUS Rounded 1c', sans-serif !important;
 }
 
 /*  ヘッダー
 -------------------------------------------*/
+.navbar {
+	margin-bottom: 0 !important;
+	border: none !important;
+	border-bottom: 14px solid #402717 !important;
+	border-radius: 0 !important;
+}
 .navbar-brand a, .navbar-brand a:hover {
-	color: #d6c299;
+	color: #402717;
+	font-size: 34px;
 	text-decoration: none;
+	font-family: 'Dancing Script', cursive;
 }
 
-.navbar-nav li, .navbar-nav a, .main-nav a:hover {
-	color: #d6c299;
+.navbar-nav li, .navbar-nav a, .navbar-nav a:hover, .main-nav a:hover {
+	color: #402717;
 	text-decoration: none;
-	margin-top: 15px;
+	margin-top: 17px;
+	margin-left: 20px;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
 }
-/* メイン全体
-------------------------------------------*/
-#main {
-	min-height: 100vh;
+.navbar-notice {
+	position: absolute;
+	height: 20px;
+	color: red;
+	padding-top: 5%;
+	padding-left: 4%;
 }
-/* ジャンルサイドバー
+/* HOME画像
 ------------------------------------------*/
-.sidebar {
-	text-align: center;
-	margin-top: 4%;
-	}
-/* メインコンテンツ
-------------------------------------------*/
-.main {
-	background-image: url("../..images/main-img02.jpg");
+.carousel {
+	height: 600px;
+	overflow: hidden;
+}
+.carousel-inner, .carousel-item {
+	height: 600px;
+}
+.carousel-image-1 {
+	background-image: url('main-img01.jpg');
 	background-size: cover;
-	background-position: center top;
-	background-repeat: no-repeat;
+	background-position: center center;
+}
+.carousel-image-2 {
+	background-image: url('main-img02.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+.carousel-image-3 {
+	background-image: url('main-img03.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+.carousel-caption {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.mid-navbar {
+	width: 100%;
+	height: 52px;
+}
+.mid-navbar .scroll {
+	line-height: 52px;
+	color: #d6c299;
+	font-size: 15px;
+	letter-spacing: 0.3em
 }
 .main-text {
 	text-align: center;
 	margin-top: 15%;
 	margin-bottom: 20%;
+	letter-spacing: 0.2em
+}
+
+/* ジャンルサイドバー
+------------------------------------------*/
+.sidebar {
+	text-align: center;
+	margin-top: 2%;
+	}
+/* 各ページ メインコンテンツ部分
+------------------------------------------*/
+.nav-img1 {
+	height: 110px;
+	width: 100%;
+	background-image: url('main-img03.jpg');
+	background-size: cover;
+}
+.item-box{
+	margin: 7%;
+}
+.sideby {
+	display: inline-block;
+}
+.get-button { /* ボタン位置調整用 */
+	margin-top: 10px;
+}
+.customer-edits .sideby { /* マイページボタン位置調整用 */
+	margin-left: 5px;
+	margin-bottom: 15px;
+}
+.thanks-message {
+	margin-top: 18%;
+}
+
+/* ログインページ、サインアップ メインコンテンツ部分
+------------------------------------------*/
+.visitor-box { /* ログイン・サイインアップ共通 */
+	height: 450px;
+	background-color: #f6efdb;
+	margin-top: 5%;
+}
+.signup-box { /* サインアップ背景 */
+	height: 620px;
+}
+
+.visitor-inbox {
+	padding: 30px;
+}
+.links-inbox {
+	padding-top: 30px;
+}
+table .th-mypage {
+	background-color: lightgray;
+	width: 30%;
+}
+.form-control {
+	margin-left: 5px !important;
+}
+.name-label {
+	padding: 0px !important;
+}
+/* 退会ページ
+----------------------------------*/
+.confirm-text {
+	margin-top: 13%;
+}
+.conf-button {
+	margin-left: 50px;
 }

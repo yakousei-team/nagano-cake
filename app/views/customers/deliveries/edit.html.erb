@@ -1,7 +1,24 @@
-<h1>配送先編集</h1>
-<%= form_with(model:@delivery, url: customers_delivery_path, local: true) do |f| %>
-	<%= f.text_area :postcode %>
-	<%= f.text_area :address %>
-	<%= f.text_area :name %>
-	<%= f.submit "登録する" %>
-<% end %>
+<div class="nav-img1"></div>
+<div class ="container">
+  <div class= "row">
+  	<div class="col-md-2"></div>
+  	<div class="col-md-5">
+		<h2>配送先編集</h2>
+		<%= form_with(model:@delivery, url: customers_delivery_path, local: true) do |f| %>
+			<div class="form-group">
+				<%= f.label :postcode, "郵便番号" %><br>
+				<%= f.text_field :postcode, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :address, "住所" %><br>
+				<%= f.text_area :address, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :name, "宛名" %><br>
+				<%= f.text_field :name, class: "form-control" %>
+			<%= f.submit "登録する", class: "btn btn-success get-button" %>
+		</div>
+		<% end %>
+		</div>
+   </div>
+</div>
