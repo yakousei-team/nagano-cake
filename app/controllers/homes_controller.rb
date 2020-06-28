@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  
+
   def top
   	@genres = Genre.where(is_deleted: false)
   	@item1 = Item.find(3)
