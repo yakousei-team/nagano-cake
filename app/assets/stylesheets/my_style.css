@@ -138,6 +138,12 @@ table .th-mypage {
 	background-color: lightgray;
 	width: 30%;
 }
+.form-control {
+	margin-left: 5px !important;
+}
+.name-label {
+	padding: 0px !important;
+}
 /* 退会ページ
 ----------------------------------*/
 .confirm-text {

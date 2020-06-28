@@ -6,55 +6,57 @@
     <div class="col-md-1"></div>
     <div class="col-md-6 visitor-box signup-box">
       <div class="visitor-inbox">
-        <h2>Sign up</h2>
+        <h2>新規登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <div class="form-group">
-  <div class="field form-inline">
-    <div class="row">
-      <%= f.label :last_name, class: "col-md-4"%>
-      <%= f.label :first_name, class: "col-md-4"%>
+  <div class="row">
+    <div class="form-group">
+    <div class="field form-inline">
+      <%= f.label :last_name, "名前（姓）", class: "col-md-5 name-label" %>
+      <%= f.label :first_name, "名前（名）", class: "col-md-3 name-label" %>
+       <div class="col-md-4"></div>
+      <%= f.text_field :last_name, autofocus: true, class: "name form-control col-md-3" %>
+      <%= f.text_field :first_name, autofocus: true, class: "name form-control col-md-3" %>
     </div>
-    <div class="row">
-      <%= f.text_field :last_name, autofocus: true, class: "name form-control col-md-4" %>
-      <%= f.text_field :first_name, autofocus: true, class: "name form-control col-md-4" %>
-    </div>
-  </div><br>
-
-  <div class="field form-inline">
-    <div class="row">
-      <%= f.label :last_name_kana, class: "col-md-4" %>
-      <%= f.label :first_name_kana, class: "col-md-4" %>
-    </div>
-    <div class="row">
-      <%= f.text_field :last_name_kana, autofocus: true, class: "name form-control col-md-4" %>
-      <%= f.text_field :first_name_kana, autofocus: true, class: "name form-control col-md-4" %>
     </div>
   </div>
 
+  <div class="row">
+  <div class="form-group">
+  <div class="field form-inline">
+    <%= f.label :last_name_kana, "名前（姓かな）", class: "col-md-5 name-label" %>
+    <%= f.label :first_name_kana, "名前（かな）", class: "col-md-3 name-label" %>
+    <div class="col-md-4"></div>
+    <%= f.text_field :last_name_kana, autofocus: true, class: "name form-control col-md-4" %>
+    <%= f.text_field :first_name_kana, autofocus: true, class: "name form-control col-md-4" %>
+  </div>
+  </div>
+</div>
+<div class="row">
+  <div class="form-group">
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "メールアドレス" %><br />
     <%= f.email_field :email, class: "email form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :postcode %><br />
+    <%= f.label :postcode, "郵便番号" %><br />
     <%= f.text_field :postcode, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :address, "住所" %><br />
     <%= f.text_field :address, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :phone_number %><br />
+    <%= f.label :phone_number, "電話番号" %><br />
     <%= f.text_field :phone_number, class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password, "パスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -62,18 +64,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "パスワード（確認のためもう一度記入してください）" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class: "password_confirm form-control" %>
   </div>
 
   <div class="actions pull-right get-button">
-    <%= f.submit "Sign up" ,class: 'btn btn-success' %>
+    <%= f.submit "新規登録",class: 'btn btn-success' %>
   </div>
+</div>
+</div>
 <% end %>
 </div>
-<%= render "customers/shared/links" %>
-        </div>
-      </div>
-      </div>
-</div>
+
+  <%= render "customers/shared/links" %>
+    </div>
+  </div>
+  </div>
+  </div>
 </div>
