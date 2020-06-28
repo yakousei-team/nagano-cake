@@ -39,14 +39,15 @@ class Customers::SessionsController < Devise::SessionsController
     if customers.empty?
       flash[:error] = "必須項目を入力してください。"
       return
-    end
+    else
     #同一アドレスで複数回、登録・退会できるためeachで確認している
     customers.each do |customer|#入力値と取り除いたemailの比較をしている
-      email = customer.email.gsub(/^[0-9]{8}_[0-9]{6}/, "")#文字列から退会用定型文を取り除いたもの
+      email = customer.email.gsub(/^[0-9]{8}_[0-9]{6}_/, "")#文字列から退会用定型文を取り除いたもの
       if email == params[:customer][:email]
         flash[:error] = "退会済みです。"
-        redirect_to new_customer_session_path
       end
+    end
+    redirect_to new_customer_session_path
     end
   end
 
